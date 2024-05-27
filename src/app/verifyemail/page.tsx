@@ -7,7 +7,7 @@ export default function Page() {
   const [verified, setVerified] = useState(false);
   const [error, setError] = useState(false);
 
-  const verifyUserEmail = async () => {
+  const VerifyUserEmail = async () => {
     useEffect(() => {
       const urlToken = window.location.search.split("=")[1];
       setToken(urlToken || "");
@@ -15,7 +15,7 @@ export default function Page() {
 
     useEffect(() => {
       if (token.length) {
-        verifyUserEmail();
+        VerifyUserEmail();
       }
     }, [token]);
   };
