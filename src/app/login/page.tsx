@@ -1,11 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { toast } from "react-hot-toast";
+import axios from "axios"
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-function loginPage() {
+function LoginPage() {
   const router = useRouter();
   const [user, setUser] = useState({
     email: "",
@@ -78,4 +77,4 @@ function loginPage() {
   );
 }
 
-export default loginPage;
+export default LoginPage;
