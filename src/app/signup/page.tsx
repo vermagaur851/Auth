@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -31,7 +30,7 @@ function page() {
       setLoading(false)
       setButtonDisabled(false);
       console.log(error.response.data.error);
-      alert(error.response.data.error);
+      alert("Something went wrong")
     }
   };
 

@@ -1,30 +1,32 @@
 "use client";
 import axios from "axios";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 
 function page() {
+  const router = useRouter();
   const [data, setData] = useState("");
 
   const getUserDetail = async () => {
     try {
       const res = await axios.get("/api/users/profile");
       console.log(res);
-      if(res.status==200){
-        const val= res.data.data._id;
+      if (res.status == 200) {
+        const val = res.data.data._id;
         setData(val);
       }
     } catch (error: any) {
-      setData("nothing")
+      setData("nothing");
       console.log("error while fetching data...");
     }
   };
 
   const logout = async () => {
     try {
-      await axios.get("/api/users/logout");
-      toast.success("logout success");
+      const res = await axios.get("/api/users/logout");
+      router.push('/login')
     } catch (error: any) {
       console.log(error.message);
       toast.error(error.message);
@@ -39,7 +41,9 @@ function page() {
         {data === "nothing" ? (
           "no data found"
         ) : (
-          <Link className="text-white border " href={`/profile/${data}`}>{data}</Link>
+          <Link className="text-white " href={`/profile/${data}`}>
+            {data}
+          </Link>
         )}
       </h2>
       <hr />
@@ -55,7 +59,6 @@ function page() {
       >
         Get User detail
       </button>
-
     </div>
   );
 }

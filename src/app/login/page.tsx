@@ -40,7 +40,7 @@ function loginPage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <h1>{loading ? "Processing" : "Sign up"}</h1>
+      <h1>{loading ? "Processing" : "Log in"}</h1>
       <hr />
       <label htmlFor="email">email</label>
       <input
