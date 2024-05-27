@@ -22,11 +22,14 @@ function loginPage() {
       setLoading(true);
       setButtonDisabled(true);
       const res = await axios.post("/api/users/login", user);
-      console.log("logged in success", res.data);
+      alert(res.data.message);
+      setLoading(false);
       setButtonDisabled(false);
       router.push("/profile");
     } catch (error: any) {
-      toast.error(error.message);
+      alert(error.response.data.error);
+      setLoading(false);
+      setButtonDisabled(false);
     }
   };
 
