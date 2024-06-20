@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import axios from "axios"
+import axios from "axios";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -16,7 +16,10 @@ function LoginPage() {
   const [ps, setPs] = useState(true);
 
   const onLogin = async () => {
-    if (buttonDisabled) return;
+    if (user.email === "" || user.password === "") {
+      alert("All fields are required !!!");
+      return;
+    }
     try {
       setLoading(true);
       setButtonDisabled(true);
@@ -70,7 +73,7 @@ function LoginPage() {
         </button>
       </div>
       <button onClick={onLogin} className="p-2 rounded-lg mb-4 border">
-        {buttonDisabled ? "No Login" : "Login"}
+        Login
       </button>
       <Link href="/signup">Visit signup page</Link>
     </div>

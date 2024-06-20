@@ -17,20 +17,23 @@ function Page() {
   const [ps, setPs] = useState(true);
 
   const onSignup = async () => {
-    if (buttonDisabled) return;
+    if (user.email === "" || user.password === "" || user.username === "") {
+      alert("All fields are required!!");
+      return;
+    }
     try {
       setLoading(true);
       setButtonDisabled(true);
       const res = await axios.post("/api/users/signup", user);
-      console.log(res)
-      alert(res.data.message)
+      console.log(res);
+      alert(res.data.message);
       setButtonDisabled(false);
       router.push("/login");
     } catch (error: any) {
-      setLoading(false)
+      setLoading(false);
       setButtonDisabled(false);
       console.log(error.response.data.error);
-      alert("Something went wrong")
+      alert("Something went wrong");
     }
   };
 
@@ -82,7 +85,7 @@ function Page() {
         </button>
       </div>
       <button onClick={onSignup} className="p-2 rounded-lg mb-4 border">
-        {buttonDisabled ? "No signup" : "signup"}
+        signup
       </button>
       <Link href="/login">Visit login page</Link>
     </div>
