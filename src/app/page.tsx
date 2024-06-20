@@ -10,7 +10,7 @@ export default function Home() {
 
   return (
     <main>
-      <div className="flex flex-row-reverse p-4">
+      <div className="flex justify-center items-center h-screen">
         <button className="border p-2 rounded" onClick={OnLogin}>Login</button>
       </div>
     </main>
